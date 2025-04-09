@@ -3,7 +3,7 @@ import React from "react"
 export const Icon = ({src}) => {
 
     return (
-        <div className="w-24 h-24">
+        <div className="w-1/2 h-1/2">
             <img
             src={src}
             />
