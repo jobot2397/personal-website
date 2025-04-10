@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dialog } from './Dialog';
 
 // Component for each feature box
-export const Card = ({ title, icon, size, details }) => {
+export const Card = ({ title, icon, size, details, singleIcon }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Generate size classes
@@ -22,9 +22,16 @@ export const Card = ({ title, icon, size, details }) => {
         className={`${getSizeClass()} bg-card-bg hover:bg-card-border border-1 border-card-border relative rounded-lg transition-all duration-300 cursor-pointer flex items-center justify-center h-full w-full`}
         onClick={() => setIsOpen(true)}
       >
+        {singleIcon &&
         <div className="flex items-center justify-center w-1/2 h-1/2">
           {icon}
         </div>
+        }
+        {!singleIcon &&
+        <div className="flex items-center justify-center">
+        {icon}
+      </div>
+        }
       </div>
 
        {/* Dialog Component */}

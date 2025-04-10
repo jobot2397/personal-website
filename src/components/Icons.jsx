@@ -5,7 +5,7 @@ export const Icons = ({icons, orientation, maxSize = 80}) => {
         <div className={`flex ${orientation === 'vertical' ? 'flex-col' : 'flex-row'} gap-4 items-center justify-center`}>
             {icons.map((icon, index) => {
                 return (
-                    <div key={index} className="w-20 h-20 flex items-center justify-center">
+                    <div key={index} className="flex items-center justify-center">
                         <SVGWithSize 
                             src={icon} 
                             index={index}

@@ -16,12 +16,14 @@ export const App = () => {
             title: "University of Texas at Austin",
             icon: <Icon src={"/images/longhorns.png"} />, // Make this an svg
             size: "small",
+            singleIcon: true,
             details: <UTexas/>
         },
         {
             title: "JPMorgan Chase & Co.",
             icon: <div className=" font-serif font-bold text-3xl text-white">JPMorgan Chase & Co.</div>, // Make this an svg
             size: "wide",
+            singleIcon: true,
             details: <JPMorgan/>
         },
         {
@@ -35,38 +37,44 @@ export const App = () => {
                 "/images/tailwindcss.png",
             ]}
             orientation={'vertical'}
-            />, // Make this an svg
+            />,
             size: "tall",
+            singleIcon: false,
             details: <Languages/>
         },
         {
             title: "AWS Certifications",
             icon: <Icon src={"/images/aws.svg"}/>, // Make this an svg
             size: "small",
+            singleIcon: true,
             details: <AWS/>
         },
         {
             title: "Portfolio",
-            icon: <img src="/images/profile-laptop.png" width={"50%"}/>, // Make this an svg
+            icon: <img src="/images/profile-laptop.png"/>, // Make this an svg
             size: "large",
+            singleIcon: true,
             details: <DS/>
         },
         {
             title: "Patents",
             icon: <Icon src={"/images/lightbulb.png"}/>, // Make this an svg
             size: "small",
+            singleIcon: true,
             details: <Patents/>
         },
         {
             title: "Embedded Systems Design Lab",
             icon: <Icon src={"/images/ds.png"}/>, // Make this an svg
             size: "small",
+            singleIcon: true,
             details: <DS/>
         },
         {
             title: "Embedded Systems Design Lab",
             icon: <Icon src={"/images/ds.png"}/>, // Make this an svg
             size: "small",
+            singleIcon: true,
             details: <DS/>
         },
         {
@@ -80,14 +88,16 @@ export const App = () => {
                 "/images/nix.svg"
             ]}
             orientation={'horizontal'}
-            />, // Make this an svg
+            />,
             size: "wide",
+            singleIcon: false,
             details: <Frameworks/>
         }, 
         {
             title: "Embedded Systems Design Lab",
             icon: <Icon src={"/images/benchy.png"}/>, // Make this an svg
             size: "small",
+            singleIcon: true,
             details: <DS/>
         },         
     ]
@@ -107,6 +117,7 @@ export const App = () => {
                         icon={card.icon}
                         size={card.size}
                         details={card.details}
+                        singleIcon={card.singleIcon}
                     />
                 })}
             </div>
