@@ -7,9 +7,7 @@ import { UTexas } from "./components/details/UTexas";
 import { Languages } from "./components/details/Languages";
 import { Frameworks } from "./components/details/Frameworks";
 import { Icon } from "./components/Icon";
-import { Icons } from "./components/Icons";
 import { VerticalIcons } from "./components/VerticalIcons";
-import { HorizontalIcons } from "./components/HorizontalIcons";
 import { Portfolio } from "./components/details/Portfolio";
 import { Resume } from "./components/details/Resume";
 import { Hobbies } from "./components/details/Hobbies";
@@ -57,9 +55,10 @@ export const App = () => {
         },
         {
             title: "Portfolio",
-            icon: <div className="w-full h-full lg:p-16 p-4 flex items-center justify-center flex-col">
-                <img className="max-w-full max-h-full" src="/images/profile-laptop.png"/>
-                <div className="py-4 font-bold text-sm lg:text-4xl text-white">Joseph Lawler</div>
+            icon: <div className="w-full h-full lg:p-10 p-4 flex items-center justify-center flex-col">
+                <img className="max-w-full max-h-full p-2" src="/images/profile-laptop.png"/>
+                <div className="py-2 text-xs lg:text-4xl text-center text-white w-full">Hi, my name is Joseph Lawler</div>
+                <div className="py-2 text-xs lg:text-xl text-center text-white ">I am an electrical engineer by background, software engineer by trade, and innovator at heart </div>
                 </div>, // Make this an svg
             size: "large",
             singleIcon: false,
