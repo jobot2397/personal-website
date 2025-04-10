@@ -10,6 +10,9 @@ import { Icon } from "./components/Icon";
 import { Icons } from "./components/Icons";
 import { VerticalIcons } from "./components/VerticalIcons";
 import { HorizontalIcons } from "./components/HorizontalIcons";
+import { Portfolio } from "./components/details/Portfolio";
+import { Resume } from "./components/details/Resume";
+import { Hobbies } from "./components/details/Hobbies";
 
 export const App = () => {
 
@@ -54,12 +57,13 @@ export const App = () => {
         },
         {
             title: "Portfolio",
-            icon: <div className="w-full h-full lg:p-16 p-4 flex items-center justify-center">
+            icon: <div className="w-full h-full lg:p-16 p-4 flex items-center justify-center flex-col">
                 <img className="max-w-full max-h-full" src="/images/profile-laptop.png"/>
+                <div className="py-4 font-bold text-sm lg:text-4xl text-white">Joseph Lawler</div>
                 </div>, // Make this an svg
             size: "large",
             singleIcon: false,
-            details: <DS/>
+            details: <Portfolio/>
         },
         {
             title: "Tooling",
@@ -89,7 +93,7 @@ export const App = () => {
             icon: <Icon src={"/images/resume.png"}/>, // Make this an svg
             size: "small",
             singleIcon: true,
-            details: <DS/>
+            details: <Resume/>
         },
         {
             title: "Embedded Systems Design Lab",
@@ -103,7 +107,7 @@ export const App = () => {
             icon: <Icon src={"/images/benchy.png"}/>, // Make this an svg
             size: "small",
             singleIcon: true,
-            details: <DS/>
+            details: <Hobbies/>
         },         
     ]
 
