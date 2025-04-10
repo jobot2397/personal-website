@@ -31,7 +31,7 @@ export const App = () => {
                 "/images/java.svg",
                 "/images/python.svg",
                 "/images/react.svg",
-                "/images/javascript.png",
+                "/images/javascript.svg",
                 "/images/tailwindcss.png",
             ]}
             orientation={'vertical'}
@@ -41,13 +41,13 @@ export const App = () => {
         },
         {
             title: "AWS Certifications",
-            icon: <Icon src={"/images/aws.png"}/>, // Make this an svg
+            icon: <Icon src={"/images/aws.svg"}/>, // Make this an svg
             size: "small",
             details: <AWS/>
         },
         {
             title: "Portfolio",
-            icon: <img src="/images/profile-laptop.jpeg" width={"50%"}/>, // Make this an svg
+            icon: <img src="/images/profile-laptop.png" width={"50%"}/>, // Make this an svg
             size: "large",
             details: <DS/>
         },
@@ -72,12 +72,12 @@ export const App = () => {
         {
             title: "Tooling",
             icon: <Icons icons={[
-                "/images/kubernetes.png",
-                "/images/docker.png",
-                "/images/git.png",
-                "/images/kafka.png"
-                // penguin
-                // nixos
+                "/images/kubernetes.svg",
+                "/images/docker.svg",
+                "/images/git.svg",
+                "/images/kafka.svg",
+                "/images/linux.svg",
+                "/images/nix.svg"
             ]}
             orientation={'horizontal'}
             />, // Make this an svg

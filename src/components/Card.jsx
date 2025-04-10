@@ -22,7 +22,9 @@ export const Card = ({ title, icon, size, details }) => {
         className={`${getSizeClass()} bg-card-bg hover:bg-card-border border-1 border-card-border relative rounded-lg transition-all duration-300 cursor-pointer flex items-center justify-center h-full w-full`}
         onClick={() => setIsOpen(true)}
       >
-        {icon}
+        <div className="flex items-center justify-center w-1/2 h-1/2">
+          {icon}
+        </div>
       </div>
 
        {/* Dialog Component */}
