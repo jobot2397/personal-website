@@ -118,8 +118,8 @@ export const App = () => {
     // <div className="p-2 grid grid-cols-4 grid-rows-4 gap-2 place-items-center aspect-square max-h-screen max-w-svh">
 
     return (
-        <div className="h-screen bg-bg flex w-screen">
-            <div className="p-2 grid grid-cols-4 grid-rows-4 gap-2 place-items-center w-screen">
+        <div className="h-screen bg-bg flex w-screen justify-center">
+            <div className="p-2 grid grid-cols-4 grid-rows-4 gap-2 place-items-center w-screen max-w-7xl">
                 {Cards.map((card) => {
                     return <Card 
                         title={card.title}
