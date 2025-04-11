@@ -1,14 +1,27 @@
-export const ChatPrompt = () => {
+export const ChatPrompt = ({ enableGreeting }) => {
     return (
         <div className="bg-transparent w-full flex flex-col">
-            <div className="flex justify-center py-2 text-text font-semibold text-[28px]">
-                What can I help with?
-            </div>
-            <div className="flex justify-center">
-                <div className="flex flex-col bg-secondary-grey rounded-3xl min-w-10/12">
-                    <div className="flex justify-start pt-4 pb-2 pl-4 text-text text-[14px]">
-                        Ask anything
+            {enableGreeting &&
+            <div className="min-w-3/5">
+                <div className="flex justify-center">
+                    <div className="max-w-md">
+                    <img src="/images/profile-laptop.png"/>
                     </div>
+                </div>
+                <div className="flex justify-center pt-2 text-text font-semibold text-[28px]">
+                    Hi, my name is Joseph Lawler!
+                </div>
+                <div className="flex justify-center pt-1 pb-4 text-text text-[20px]">
+                    Learn more about me using the chat or buttons below
+                </div>
+                </div>
+            }
+            <div className="flex justify-center">
+                <div className="flex flex-col bg-secondary-grey rounded-3xl min-w-3/5">
+                    <div className="flex justify-start pt-4 pb-2 pl-4 text-text text-[14px]">
+                        Some funny prompt
+                    </div>
+                    {/* Need to make these buttons overflow to two rows on mobile */}
                     <div className="flex items-center justify-between p-2">
                         <div className="flex flex-row gap-2 justify-center">
                             <div className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold">
