@@ -1,5 +1,5 @@
 import { Header } from "./components/Header";
-import OllamaChat from "./components/test";
+import { OllamaChat } from "./components/OllamaChat";
 
 export const App = () => {
     return (

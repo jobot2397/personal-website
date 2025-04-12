@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Ollama } from 'ollama';
 
-function OllamaChat() {
+export const OllamaChat = ({clearChat, triggerClearChat}) => {
     // State for conversation history - array of message objects
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
@@ -20,6 +20,15 @@ function OllamaChat() {
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    useEffect(() => {
+        setMessages([])
+        setInputText('')
+        setIsLoading(false)
+        if(clearChat) {
+            triggerClearChat(false)
+        }
+    }, [clearChat])
 
     // Scroll to bottom whenever messages change
     useEffect(() => {
@@ -195,5 +204,3 @@ function OllamaChat() {
         </div>
     );
 }
-
-export default OllamaChat;

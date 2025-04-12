@@ -22,15 +22,6 @@ export default function Dropdown() {
         };
     }, []);
 
-    const dropdownItems = [
-        {
-            title: "TEST 1"
-        },
-        {
-            title: "TEST 2"
-        }
-    ]
-
     return (
         <div ref={wrapperRef}>
             <Menu as="div" className="relative inline-block text-left" >
@@ -53,27 +44,8 @@ export default function Dropdown() {
                 data-leave:duration-75 data-leave:ease-in"
                 >
                     {open &&
-                        <div >
-                            {dropdownItems.map((dropdownItem, index) => {
-                                return (
-                                    <div key={index}>
-                                        <MenuItem>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 text-sm text-text data-focus:bg-secondary-grey data-focus:outline-hidden"
-                                                onClick={() => { setOpen(false) }}
-                                            >
-                                                {dropdownItem.title}
-                                            </a>
-                                        </MenuItem>
-                                        {/* Add divider after each item except the last one */}
-                                        {index < dropdownItems.length - 1 && (
-                                            <div className="h-px bg-border"></div>
-                                        )}
-                                    </div>
-                                );
-                            })}
-
+                        <div  className='w-40 h-40'>
+                            What should I put here?
                         </div>
                     }
                 </MenuItems>
