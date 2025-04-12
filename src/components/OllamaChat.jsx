@@ -56,7 +56,7 @@ export const OllamaChat = () => {
         try {
             // Create Ollama client
             const ollama = new Ollama({
-                host: "http://192.168.100.25:11434",
+                host: "https://joegpt.taile4be99.ts.net",
             });
 
             // Prepare message history for the API call
