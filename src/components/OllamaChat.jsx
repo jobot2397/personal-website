@@ -155,25 +155,25 @@ export const OllamaChat = () => {
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                             className="flex justify-start pt-4 pb-2 pl-4 text-text text-[14px] w-full focus:outline-0 "
-                            placeholder={placeHolderMessages[Math.floor(Math.random() * placeHolderMessages.length)]}
+                            placeholder={isLoading ? "TEST" : placeHolderMessages[Math.floor(Math.random() * placeHolderMessages.length)]}
                             disabled={isLoading}
                         />
                         {/* Need to make these buttons overflow to two rows on mobile */}
                         <div className="flex flex-row items-center justify-between p-2 w-full">
                             <div className="flex flex-row gap-2 justify-center">
-                                <button className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
-                                    onClick={() => fixedResponses("What job experience does Joseph Lawler have?",<div className='bg-amber-600'>HELLO!!!</div>)}>
+                                <button type={"button"} className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
+                                    onClick={() => fixedResponses("What job experience does Joseph Lawler have?","idk lol ")}>
                                     Experience
                                 </button>
-                                <button className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
+                                <button type={"button"} className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
                                     onClick={() => fixedResponses("What patents does Joseph Lawler have?","idk lol ")}>
                                     Patents
                                 </button>
-                                <button className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
+                                <button type={"button"} className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
                                     onClick={() => fixedResponses("What skills does Joseph Lawler have?","idk lol ")}>                               
                                     Skills
                                 </button>
-                                <button className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
+                                <button type={"button"} className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
                                     onClick={() => fixedResponses("What education does Joseph Lawler have?","idk lol ")}>
                                     Education
                                 </button>
