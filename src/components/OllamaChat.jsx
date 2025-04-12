@@ -1,5 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Ollama } from "ollama";
+import JoeGPTGuidelines from "/prompt.txt"
+
+// Create Ollama client
+const ollama = new Ollama({
+    host: "https://joegpt.taile4be99.ts.net",
+});
+const model = "gemma3:12b"
 
 export const OllamaChat = () => {
   // State for conversation history - array of message objects
@@ -35,6 +42,25 @@ export const OllamaChat = () => {
     },
   };
 
+  useEffect(() => {
+    // Fetch prompt file
+    fetch(JoeGPTGuidelines)
+        .then(r => r.text())
+        .then(async text => {
+            const initialPrompt = {
+                role: "user",
+                content: text,
+              };
+              setMessages([initialPrompt]);
+
+              await ollama.chat({
+                model: model,
+                messages: [initialPrompt],
+                stream: true,
+              });
+        });
+  }, [])
+
   // Function to scroll to bottom of messages
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -47,7 +73,7 @@ export const OllamaChat = () => {
 
   const sendPrefixedMessage = (fixedResponse) => {
     // Prefixed responses
-
+    console.log(messages)
     // Add user message to the chat
     const userMessage = {
       role: "user",
@@ -79,11 +105,6 @@ export const OllamaChat = () => {
     setIsLoading(true);
 
     try {
-      // Create Ollama client
-      const ollama = new Ollama({
-        host: "https://joegpt.taile4be99.ts.net",
-      });
-
       // Prepare message history for the API call
       const chatHistory = [...messages, userMessage];
 
@@ -95,7 +116,7 @@ export const OllamaChat = () => {
 
       // Start streaming
       const stream = await ollama.chat({
-        model: "llama3.2:1b",
+        model: model,
         messages: chatHistory,
         stream: true,
       });
@@ -132,7 +153,7 @@ export const OllamaChat = () => {
 
   return (
     <div className="flex-1 flex flex-col w-3/5 mx-auto pb-4 overflow-hidden">
-      {messages.length === 0 ? (
+      {messages.length === 1 ? (
         // Empty state centered in the available space
         <div className="flex-1 flex flex-col justify-center items-center">
           <div className="w-full">
@@ -152,7 +173,9 @@ export const OllamaChat = () => {
       ) : (
         // Messages with scrolling - ensuring it stays within bounds
         <div className="flex-1 overflow-y-auto mb-4">
-          {messages.map((message, index) => (
+          {messages.map((message, index) => {
+            if (index > 0) {
+            return (
             <div
               key={index}
               className={`mb-4 ${
@@ -170,7 +193,7 @@ export const OllamaChat = () => {
                   isLoading && <span className="animate-pulse">▋</span>}
               </div>
             </div>
-          ))}
+            )}})}
           <div ref={messagesEndRef} />
         </div>
       )}
