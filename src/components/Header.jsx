@@ -2,7 +2,7 @@ import Dropdown from "./Dropdown"
 
 export const Header = () => {
     return (
-        <div className="flex flex-row justify-between w-full content-center">
+        <div className="flex flex-row justify-between w-full content-center h-fit">
             <div className="flex items-center justify-center">
                 <div className="w-fit h-fit ">
                     <svg width="24px" height="24px" color="rgb(243, 243, 243)">
