@@ -1,4 +1,45 @@
+import { Ollama } from "ollama";
+
+// Set up the client with your server IP
+const ollama = new Ollama({
+  host: "http://192.168.100.25:11434",
+});
+
 export const ChatPrompt = ({ enableGreeting }) => {
+
+    const callAPI = async () => {
+        try {
+            // Create a streaming chat completion
+            const stream = await ollama.chat({
+              model: "llama3.2:1b",
+              messages: [
+                {
+                  role: "user",
+                  content: "Tell me a short story about a robot",
+                }
+              ],
+              stream: true,
+            });
+        
+            let fullResponse = "";
+        
+            // Process each chunk as it arrives
+            for await (const chunk of stream) {
+              if (chunk.message?.content) {
+                // Log each new piece of content
+                const newContent = chunk.message.content;
+                console.log(newContent);
+                fullResponse += newContent;
+              }
+            }
+        
+            console.log("Full response:", fullResponse);
+            console.log("Stream completed");
+          } catch (error) {
+            console.error("Error streaming from Ollama:", error);
+          }
+    }
+
     return (
         <div className="bg-transparent w-full flex flex-col">
             {enableGreeting &&
@@ -38,7 +79,7 @@ export const ChatPrompt = ({ enableGreeting }) => {
                             </div>
                         </div>
                         <div className="flex justify-end">
-                            <div className="flex bg-border rounded-full aspect-square justify-center items-center p-2">
+                            <div className="flex bg-border rounded-full aspect-square justify-center items-center p-2 cursor-pointer" onClick={callAPI}>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="rgb(48, 48, 48)" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
                                 </svg>

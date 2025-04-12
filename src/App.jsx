@@ -1,6 +1,7 @@
 import { ChatPrompt } from "./components/ChatPrompt";
 import { ChatResponse } from "./components/ChatResponse";
 import { Header } from "./components/Header";
+import OllamaChat from "./components/test";
 
 export const App = () => {
 
@@ -15,9 +16,10 @@ export const App = () => {
                 responseText="Response"
             />
             </div> */}
-            <div className="flex-1 flex justify-center items-center mb-[50%]">
+            {/* <div className="flex-1 flex justify-center items-center mb-[50%]">
                 <ChatPrompt enableGreeting={true}/>
-            </div>
+            </div> */}
+            <OllamaChat/>
         </div>
     );
 }
