@@ -162,7 +162,7 @@ export const OllamaChat = () => {
                         <div className="flex flex-row items-center justify-between p-2 w-full">
                             <div className="flex flex-row gap-2 justify-center">
                                 <button className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
-                                    onClick={() => fixedResponses("What job experience does Joseph Lawler have?","idk lol ")}>
+                                    onClick={() => fixedResponses("What job experience does Joseph Lawler have?",<div className='bg-amber-600'>HELLO!!!</div>)}>
                                     Experience
                                 </button>
                                 <button className="h-fit bg-transparent rounded-3xl px-4 py-2 border-[1px] border-border text-text text-[13px] font-semibold"
