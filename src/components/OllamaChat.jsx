@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Ollama } from 'ollama';
 
-export const OllamaChat = ({clearChat, triggerClearChat}) => {
+export const OllamaChat = () => {
     // State for conversation history - array of message objects
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
@@ -21,15 +21,6 @@ export const OllamaChat = ({clearChat, triggerClearChat}) => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    useEffect(() => {
-        setMessages([])
-        setInputText('')
-        setIsLoading(false)
-        if(clearChat) {
-            triggerClearChat(false)
-        }
-    }, [clearChat])
-
     // Scroll to bottom whenever messages change
     useEffect(() => {
         scrollToBottom();
@@ -47,7 +38,8 @@ export const OllamaChat = ({clearChat, triggerClearChat}) => {
         setMessages(prevMessages => [...prevMessages, aiMessage]);
     }
 
-    const handleSendMessage = async () => {
+    const handleSendMessage = async (e) => {
+        e.preventDefault()
 
         if (!inputText.trim()) return;
 
@@ -189,7 +181,7 @@ export const OllamaChat = ({clearChat, triggerClearChat}) => {
                             <div className="flex">
                                 <button
                                     type="submit"
-                                    className="flex bg-border rounded-full aspect-square justify-center items-center p-2 cursor-pointer hover:bg-primary-white"
+                                    className="flex bg-border rounded-full aspect-square justify-center items-center p-2 cursor-pointer hover:bg-primary-white transition ease-in-out duration-300"
                                     disabled={isLoading}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="rgb(48, 48, 48)" className="size-6">
