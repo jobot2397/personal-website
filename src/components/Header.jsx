@@ -1,4 +1,19 @@
+import { useState } from "react";
+import { Dialog } from "./Dialog";
+
 export const Header = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleDownloadPublicFile = () => {
+        const link = document.createElement('a');
+        link.href = '/Resume-UPDATE_THIS.pdf'; 
+        link.download = 'Joseph-Lawler-Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
   return (
     <div className="flex flex-row justify-between w-full content-center h-fit">
       <div className="flex items-center justify-center">
@@ -17,13 +32,20 @@ export const Header = () => {
         </div>
       </div>
       <div className="flex flex-row gap-2 items-center">
-        <div className="text-black h-fit font-sans text-[14px] hover:text-text bg-primary-white rounded-3xl px-4 py-2 hover:bg-border align-middle">
+        <div className="text-black h-fit font-sans text-[14px] hover:text-text bg-primary-white rounded-3xl px-4 py-2 hover:bg-border align-middle" onClick={handleDownloadPublicFile}>
           Resume
         </div>
-        <div className="bg-transparent h-fit rounded-3xl px-4 py-2 border-[1px] border-border text-text font-sans text-[14px] hover:bg-primary-white hover:text-black">
+        <div className="bg-transparent h-fit rounded-3xl px-4 py-2 border-[1px] border-border text-text font-sans text-[14px] hover:bg-primary-white hover:text-black" onClick={() => {setIsOpen(true)}}>
           Contact
         </div>
       </div>
+      {isOpen &&
+      <Dialog 
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+      title={"title"}
+      details={"details"}
+    />}
     </div>
   );
 };

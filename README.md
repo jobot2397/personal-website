@@ -3,11 +3,11 @@ ToDo
 - Go through all code a properly format and comment
 - Give AI context
 - Make prefixed responses better
-- Choose better model
-- Add something to dropdown
 - Merge to master branch
 - Add way to clear chat
-- Need to replace TEST in placeholder with input text
 - Need to figure out a way to omit fixed data or replace it with text so that I can visualize pretty things 
 - Need to render markdown
-- Figure out what to do with log in and sign up buttons
+- Make contact dialog
+- Make prompt.txt better
+- Make Hayley happy
+- Make pdf in a dialog
