@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Ollama } from "ollama";
 import JoeGPTGuidelines from "/prompt.txt";
+import Markdown from "react-markdown";
 
 // Create Ollama client
 const ollama = new Ollama({
@@ -185,12 +186,10 @@ export const OllamaChat = () => {
                     message.role === "user" ? "ml-auto" : "mr-auto"
                   }`}
                 >
-                  <div className="whitespace-pre-wrap">
-                    {message.content}
-                    {index === messages.length - 1 &&
-                      message.role === "assistant" &&
-                      isLoading && <span className="animate-pulse">▋</span>}
-                  </div>
+                  <Markdown>{message.content}</Markdown>
+                  {index === messages.length - 1 &&
+                    message.role === "assistant" &&
+                    isLoading && <span className="animate-pulse">▋</span>}
                 </div>
               );
             }
