@@ -1,17 +1,10 @@
 import { useState } from "react";
-import { Dialog } from "./Dialog";
+import ResumeDialog from "./ResumeDialog";
+import ContactDialog from "./ContactDialog";
 
 export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleDownloadPublicFile = () => {
-    const link = document.createElement("a");
-    link.href = "/Resume-UPDATE_THIS.pdf";
-    link.download = "Joseph-Lawler-Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <div className="flex flex-row justify-between w-full content-center h-fit">
@@ -33,27 +26,19 @@ export const Header = () => {
       <div className="flex flex-row gap-2 items-center">
         <div
           className="text-black h-fit font-sans text-[14px] hover:text-text bg-primary-white rounded-3xl px-4 py-2 hover:bg-border align-middle"
-          onClick={handleDownloadPublicFile}
+          onClick={() => setResumeOpen(true)}
         >
           Resume
         </div>
         <div
           className="bg-transparent h-fit rounded-3xl px-4 py-2 border-[1px] border-border text-text font-sans text-[14px] hover:bg-primary-white hover:text-black"
-          onClick={() => {
-            setIsOpen(true);
-          }}
+          onClick={() => setContactOpen(true)}
         >
           Contact
         </div>
       </div>
-      {isOpen && (
-        <Dialog
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          title={"title"}
-          details={"details"}
-        />
-      )}
+      {resumeOpen && <ResumeDialog setIsOpen={setResumeOpen} />}
+      {contactOpen && <ContactDialog setIsOpen={setContactOpen} />}
     </div>
   );
 };
