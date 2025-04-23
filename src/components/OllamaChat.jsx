@@ -9,7 +9,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 const ollama = new Ollama({
   host: "https://joegpt.taile4be99.ts.net",
 });
-const model = "gemma3:12b";
+const model = "gemma3:12bb";
 
 export const OllamaChat = () => {
   // State for conversation history - array of message objects
@@ -132,7 +132,7 @@ export const OllamaChat = () => {
         ...prevMessages,
         {
           role: "system",
-          content: "Error: Failed to get response from Ollama.",
+          content: "ERROR",
         },
       ]);
     } finally {
@@ -194,7 +194,24 @@ export const OllamaChat = () => {
                     message.role === "user" ? "ml-auto" : "mr-auto"
                   }`}
                 >
-                  <Markdown>{message.content}</Markdown>
+                  {(() => {
+                    switch (message.content) {
+                      case "ERROR":
+                        return (
+                          <div className="flex justify-center">
+                            <div className="max-w-md">
+                              <img
+                                src="/images/profile-shrug.jpeg"
+                                alt="Error"
+                              />
+                            </div>
+                          </div>
+                        );
+                      default:
+                        return <Markdown>{message.content}</Markdown>;
+                    }
+                  })()}
+
                   {index === messages.length - 1 &&
                     message.role === "assistant" &&
                     isLoading && <span className="animate-pulse">▋</span>}
