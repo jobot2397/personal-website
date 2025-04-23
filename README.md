@@ -3,12 +3,9 @@ ToDo
 - Give AI context
 - Make prefixed responses better
 - Merge to master branch
-- Add way to clear chat
+- Add way to clear chat (trash can icon in bottom)
 - Need to figure out a way to omit fixed data or replace it with text so that I can visualize pretty things
-- Make contact dialog
 - Make prompt.txt better
-- Make pdf in a dialog
-- Install biomejs
 - Install posthog
 - Move hosting to hostinger
-- Update resume
+- Make error an image

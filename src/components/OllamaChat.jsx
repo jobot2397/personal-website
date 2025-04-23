@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Ollama } from "ollama";
 import JoeGPTGuidelines from "/prompt.txt";
 import Markdown from "react-markdown";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 // Create Ollama client
 const ollama = new Ollama({
@@ -45,21 +47,8 @@ export const OllamaChat = () => {
 
   useEffect(() => {
     // Fetch prompt file
-    fetch(JoeGPTGuidelines)
-      .then((r) => r.text())
-      .then(async (text) => {
-        const initialPrompt = {
-          role: "user",
-          content: text,
-        };
-        setMessages([initialPrompt]);
-
-        await ollama.chat({
-          model: model,
-          messages: [initialPrompt],
-          stream: true,
-        });
-      });
+    //
+    handleInitalChat();
   }, []);
 
   // Function to scroll to bottom of messages
@@ -151,10 +140,29 @@ export const OllamaChat = () => {
     }
   };
 
+  function handleInitalChat() {
+    fetch(JoeGPTGuidelines)
+      .then((r) => r.text())
+      .then(async (text) => {
+        const initialPrompt = {
+          role: "user",
+          content: text,
+        };
+        setMessages([initialPrompt]);
+
+        await ollama.chat({
+          model: model,
+          messages: [initialPrompt],
+          stream: true,
+        });
+      });
+    setInputText("");
+  }
+
   return (
     <div className="flex-1 flex flex-col w-5/6 sm:w-3/5 mx-auto pb-4 overflow-hidden">
       {messages.length === 1 ? (
-        // Empty state centered in the available space
+        // Initial state centered in the available space
         <div className="flex-1 flex flex-col justify-center items-center">
           <div className="w-full">
             <div className="flex justify-center">
@@ -202,34 +210,37 @@ export const OllamaChat = () => {
       <div className="mt-auto">
         <div className="flex bg-secondary-grey rounded-3xl w-full">
           <form onSubmit={handleSendMessage} className="w-full">
-            <textarea
-              value={inputText}
-              onChange={(e) => {
-                setInputText(e.target.value);
-                // Auto-resize textarea
-                // e.target.style.height = "auto";
-                e.target.style.height = `${Math.min(
-                  e.target.scrollHeight,
-                  192
-                )}px`; // 192px = ~12rem
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSendMessage(e);
+            <div className="flex flex-row justify-between items-center pr-3">
+              <textarea
+                value={inputText}
+                onChange={(e) => {
+                  setInputText(e.target.value);
+                  e.target.style.height = `${Math.min(
+                    e.target.scrollHeight,
+                    192
+                  )}px`; // 192px = ~12rem
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendMessage(e);
+                  }
+                }}
+                className="flex justify-start pt-4 pb-2 px-4 text-text text-[14px] w-full h-fit focus:outline-0 resize-none overflow-y-auto bg-transparent"
+                placeholder={
+                  isLoading
+                    ? "Thinking ..."
+                    : placeHolderMessages[
+                        Math.floor(Math.random() * placeHolderMessages.length)
+                      ]
                 }
-              }}
-              className="flex justify-start pt-4 pb-2 px-4 text-text text-[14px] w-full h-fit focus:outline-0 resize-none overflow-y-auto bg-transparent"
-              // style={{ height: "48px" }} // Initial height
-              placeholder={
-                isLoading
-                  ? "Thinking ..."
-                  : placeHolderMessages[
-                      Math.floor(Math.random() * placeHolderMessages.length)
-                    ]
-              }
-              disabled={isLoading}
-            />
+                disabled={isLoading}
+              />
+              <TrashIcon
+                className="size-8 stroke-border stroke-2 hover:stroke-primary-white transition ease-in-out duration-300"
+                onClick={handleInitalChat}
+              />
+            </div>
             {/* Need to make these buttons overflow to two rows on mobile */}
             <div className="flex flex-row items-center justify-center sm:justify-between p-2 w-full flex-wrap">
               <div className="flex flex-row gap-2 justify-center">
@@ -336,20 +347,7 @@ export const OllamaChat = () => {
                     Submit
                   </div>
                   <div className="hidden sm:block">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="3"
-                      stroke="rgb(48, 48, 48)"
-                      class="size-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
-                      />
-                    </svg>
+                    <ArrowUpIcon className="size-6 stroke-secondary-grey stroke-3" />
                   </div>
                 </button>
               </div>
