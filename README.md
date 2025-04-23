@@ -8,3 +8,7 @@ ToDo
 - Make contact dialog
 - Make prompt.txt better
 - Make pdf in a dialog
+- Install biomejs
+- Install posthog
+- Move hosting to hostinger
+- Update resume
