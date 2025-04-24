@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Ollama } from "ollama";
+import { Ollama } from "ollama/browser";
 import JoeGPTGuidelines from "/prompt.txt";
 import Markdown from "react-markdown";
 import { ArrowUpIcon } from "@heroicons/react/24/outline";
@@ -9,7 +9,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 const ollama = new Ollama({
   host: "https://joegpt.taile4be99.ts.net",
 });
-const model = "gemma3:12bb";
+const model = "gemma3:12b";
 
 export const OllamaChat = () => {
   // State for conversation history - array of message objects
@@ -254,7 +254,7 @@ export const OllamaChat = () => {
                 disabled={isLoading}
               />
               <TrashIcon
-                className="size-8 stroke-border stroke-2 hover:stroke-primary-white transition ease-in-out duration-300"
+                className="size-8 stroke-border stroke-2 hover:stroke-primary-white transition ease-in-out duration-300 cursor-pointer"
                 onClick={handleInitalChat}
               />
             </div>
