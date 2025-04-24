@@ -26,6 +26,7 @@ const ollama = new Ollama({
 
 // API endpoint for text generation
 app.post('/api/generate', async (req, res) => {
+    console.log(req)
   try {
     const { prompt, model } = req.body;
     
