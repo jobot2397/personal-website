@@ -4,12 +4,17 @@ import JoeGPTGuidelines from "/prompt.txt";
 import Markdown from "react-markdown";
 import { ArrowUpIcon } from "@heroicons/react/24/outline";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import {
+  FIXED_RESPONSES,
+  HOST,
+  MODEL_NAME,
+  PLACE_HOLDER_MESSAGES,
+} from "../constants";
 
 // Create Ollama client
 const ollama = new Ollama({
-  host: "https://joegpt.taile4be99.ts.net",
+  host: HOST,
 });
-const model = "gemma3:12b";
 
 export const OllamaChat = () => {
   // State for conversation history - array of message objects
@@ -18,36 +23,8 @@ export const OllamaChat = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  const placeHolderMessages = [
-    "Ask me why I beekeep despite being allergic...",
-    "Ask me why I moved from New Jersey to Texas...",
-    "Ask me how often I play pickleball...",
-    "Ask me who my favorite battlebot is...",
-    "Ask me what my favorite dog is...",
-  ];
-
-  const fixedResponses = {
-    experience: {
-      question: "What work experience does Joseph Lawler have?",
-      response: "Joseph Lawler has worked in multiple industries",
-    },
-    patents: {
-      question: "Wait, this guy has patents?!?",
-      response: "He has 3 lol",
-    },
-    skills: {
-      question: "What skills does Joseph Lawler have?",
-      response: "Skill ahh yes",
-    },
-    education: {
-      question: "What education background does Joseph Lawler have?",
-      response: "Hook 'em horns bby",
-    },
-  };
-
   useEffect(() => {
-    // Fetch prompt file
-    //
+    // Prompt chat with info about me
     handleInitalChat();
   }, []);
 
@@ -66,14 +43,14 @@ export const OllamaChat = () => {
     // Add user message to the chat
     const userMessage = {
       role: "user",
-      content: fixedResponses[fixedResponse].question,
+      content: FIXED_RESPONSES[fixedResponse].question,
     };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
 
     // Add AI message to the chat
     const aiMessage = {
       role: "assistant",
-      content: fixedResponses[fixedResponse].response,
+      content: FIXED_RESPONSES[fixedResponse].response,
     };
     setMessages((prevMessages) => [...prevMessages, aiMessage]);
   };
@@ -105,7 +82,7 @@ export const OllamaChat = () => {
 
       // Start streaming
       const stream = await ollama.chat({
-        model: model,
+        model: MODEL_NAME,
         messages: chatHistory,
         stream: true,
       });
@@ -140,6 +117,7 @@ export const OllamaChat = () => {
     }
   };
 
+  // Prompt model with information about me
   function handleInitalChat() {
     fetch(JoeGPTGuidelines)
       .then((r) => r.text())
@@ -151,7 +129,7 @@ export const OllamaChat = () => {
         setMessages([initialPrompt]);
 
         await ollama.chat({
-          model: model,
+          model: MODEL_NAME,
           messages: [initialPrompt],
           stream: true,
         });
@@ -247,8 +225,8 @@ export const OllamaChat = () => {
                 placeholder={
                   isLoading
                     ? "Thinking ..."
-                    : placeHolderMessages[
-                        Math.floor(Math.random() * placeHolderMessages.length)
+                    : PLACE_HOLDER_MESSAGES[
+                        Math.floor(Math.random() * PLACE_HOLDER_MESSAGES.length)
                       ]
                 }
                 disabled={isLoading}

@@ -1,8 +1,6 @@
 ToDo
-- Go through all code a properly format and comment
 - Give AI context
 - Make prefixed responses better
-- Merge to master branch
 - Need to figure out a way to omit fixed data or replace it with text so that I can visualize pretty things
 - Make prompt.txt better
 - Install posthog

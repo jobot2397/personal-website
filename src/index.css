@@ -2,15 +2,25 @@
 
 /* Set the font as default for the entire application */
 @layer base {
-    html {
-      font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
-    }
+  html {
+    font-family: var(
+      --default-font-family,
+      ui-sans-serif,
+      system-ui,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      "Noto Color Emoji"
+    );
+  }
 }
 
+/* Mimic chatgpt theme */
 @theme {
-    --color-primary-grey: #212121;
-    --color-secondary-grey: rgb(48, 48, 48);
-    --color-text: rgb(243, 243, 243);
-    --color-primary-white: rgb(236, 236, 236);
-    --color-border: rgba(255, 255, 255, 0.15);
+  --color-primary-grey: #212121;
+  --color-secondary-grey: rgb(48, 48, 48);
+  --color-text: rgb(243, 243, 243);
+  --color-primary-white: rgb(236, 236, 236);
+  --color-border: rgba(255, 255, 255, 0.15);
 }
