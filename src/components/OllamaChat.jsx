@@ -12,7 +12,7 @@ import {
 
 // Create Ollama client
 const ollama = new Ollama({
-  host: 'http://localhost:3001',
+  host: ' https://joegpt.taile4be99.ts.net/',
 });
 
 export const OllamaChat = () => {
