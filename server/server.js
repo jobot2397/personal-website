@@ -12,6 +12,16 @@ app.use(json());
 // Initialize Ollama
 const ollama = new Ollama({
   host: 'https://joegpt.taile4be99.ts.net',
+  fetch: (url, options) => {
+    const httpsAgent = new https.Agent({
+      rejectUnauthorized: false // Warning: this bypasses SSL verification - use only in controlled environments
+    });
+    
+    return fetch(url, {
+      ...options,
+      agent: httpsAgent
+    });
+  }
 });
 
 // API endpoint for text generation
