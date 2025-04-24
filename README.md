@@ -5,4 +5,3 @@ ToDo
 - Make prompt.txt better
 - Install posthog
 - Move hosting to hostinger
-- Make error an image

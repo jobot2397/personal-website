@@ -1,3 +1,4 @@
+import posthog from "posthog-js";
 import { Header } from "./components/Header";
 import { OllamaChat } from "./components/OllamaChat";
 import { pdfjs } from "react-pdf";
@@ -9,6 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 export default function App() {
+  posthog?.capture("App Loaded", { property: "App loaded successfully" });
   return (
     <div className="h-screen w-screen bg-primary-grey p-4 flex flex-col overflow-hidden">
       <Header />
