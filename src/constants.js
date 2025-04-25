@@ -1,5 +1,5 @@
 export const MODEL_NAME = "gemma3:12b";
-export const HOST = "https://joegpt.taile4be99.ts.net";
+export const HOST = "https://joegpt.taile4be99.ts.net:8443";
 export const PLACE_HOLDER_MESSAGES = [
   "Ask me why I beekeep despite being allergic...",
   "Ask me why I moved from New Jersey to Texas...",
