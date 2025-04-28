@@ -109,6 +109,7 @@ export const OllamaChat = () => {
           });
         }
       }
+      // console.log(newMessages)
       posthog?.capture("Chat Response", { response: newMessages[newMessages.length - 1] });
     } catch (error) {
       console.error("Error streaming from Ollama:", error);
