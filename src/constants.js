@@ -10,18 +10,18 @@ export const PLACE_HOLDER_MESSAGES = [
 export const FIXED_RESPONSES = {
   experience: {
     question: "What work experience does Joseph Lawler have?",
-    response: "Joseph Lawler has worked in multiple industries",
+    response: "EXPERIENCE",
   },
   patents: {
     question: "Wait, this guy has patents?!?",
-    response: "He has 3 lol",
+    response: "PATENTS",
   },
   skills: {
     question: "What skills does Joseph Lawler have?",
-    response: "Skill ahh yes",
+    response: "SKILLS",
   },
   education: {
     question: "What education background does Joseph Lawler have?",
-    response: "Hook 'em horns bby",
+    response: "EDUCATION",
   },
 };

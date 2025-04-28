@@ -10,6 +10,12 @@ import {
   MODEL_NAME,
   PLACE_HOLDER_MESSAGES,
 } from "../constants";
+import Error from "./Error";
+import Experience from "./Experience";
+import Skills from "./Skills";
+import Patents from "./Patents";
+import Education from "./Education";
+import posthog from "posthog-js";
 
 // Create Ollama client
 const ollama = new Ollama({
@@ -88,10 +94,11 @@ export const OllamaChat = () => {
       });
 
       // Process the stream
+      let newMessages = [];
       for await (const chunk of stream) {
         if (chunk.message?.content) {
           setMessages((prevMessages) => {
-            const newMessages = [...prevMessages];
+            newMessages = [...prevMessages];
             // Update the last message (which is the assistant's)
             const lastIndex = newMessages.length - 1;
             newMessages[lastIndex] = {
@@ -102,9 +109,11 @@ export const OllamaChat = () => {
           });
         }
       }
+      posthog?.capture("Chat Response", { response: newMessages[newMessages.length - 1] });
     } catch (error) {
       console.error("Error streaming from Ollama:", error);
       // Add error message
+      posthog?.capture("Chat ERROR", { error: error });
       setMessages((prevMessages) => [
         ...prevMessages,
         {
@@ -164,29 +173,33 @@ export const OllamaChat = () => {
               return (
                 <div
                   key={index}
-                  className={`mb-4 ${
-                    message.role === "user"
+                  className={`mb-4 ${message.role === "user"
                       ? "text-text bg-border ml-auto"
                       : "text-text"
-                  } p-3 rounded-3xl max-w-[80%] px-4 w-fit ${
-                    message.role === "user" ? "ml-auto" : "mr-auto"
-                  }`}
+                    } p-3 rounded-3xl max-w-[80%] px-4 w-fit ${message.role === "user" ? "ml-auto" : "mr-auto"
+                    }`}
                 >
                   {(() => {
                     switch (message.content) {
                       case "ERROR":
                         return (
-                          <div className="flex flex-col justify-center">
-                            <div className="max-w-md">
-                              <img
-                                src="/images/profile-shrug.png"
-                                alt="Error"
-                              />
-                            </div>
-                            <div className="text-center pt-4">
-                            Error please try again later
-                            </div>
-                          </div>
+                          <Error />
+                        );
+                      case "EXPERIENCE":
+                        return (
+                          <Experience/>
+                        );
+                      case "SKILLS":
+                        return (
+                          <Skills/>
+                        );
+                      case "PATENTS":
+                        return (
+                          <Patents/>
+                        );
+                      case "EDUCATION":
+                        return (
+                          <Education/>
                         );
                       default:
                         return <Markdown>{message.content}</Markdown>;
@@ -229,8 +242,8 @@ export const OllamaChat = () => {
                   isLoading
                     ? "Thinking ..."
                     : PLACE_HOLDER_MESSAGES[
-                        Math.floor(Math.random() * PLACE_HOLDER_MESSAGES.length)
-                      ]
+                    Math.floor(Math.random() * PLACE_HOLDER_MESSAGES.length)
+                    ]
                 }
                 disabled={isLoading}
               />
