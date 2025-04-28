@@ -110,7 +110,7 @@ export const OllamaChat = () => {
         }
       }
       // console.log(newMessages)
-      posthog?.capture("Chat Response", { response: newMessages[newMessages.length - 1] });
+      // posthog?.capture("Chat Response", { response: newMessages[newMessages.length - 1] });
     } catch (error) {
       console.error("Error streaming from Ollama:", error);
       // Add error message
@@ -183,26 +183,32 @@ export const OllamaChat = () => {
                   {(() => {
                     switch (message.content) {
                       case "ERROR":
+                        posthog?.capture("Encountered an error", {prefixedButton: message.content});
                         return (
                           <Error />
                         );
                       case "EXPERIENCE":
+                        posthog?.capture("Selected prefixed response", {prefixedButton: message.content});
                         return (
                           <Experience/>
                         );
                       case "SKILLS":
+                        posthog?.capture("Selected prefixed response", {prefixedButton: message.content});
                         return (
                           <Skills/>
                         );
                       case "PATENTS":
+                        posthog?.capture("Selected prefixed response", {prefixedButton: message.content});
                         return (
                           <Patents/>
                         );
                       case "EDUCATION":
+                        posthog?.capture("Selected prefixed response", {prefixedButton: message.content});
                         return (
                           <Education/>
                         );
                       default:
+                        posthog?.capture("JoeGPT Response", {prefixedButton: message.content});
                         return <Markdown>{message.content}</Markdown>;
                     }
                   })()}

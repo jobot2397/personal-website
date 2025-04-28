@@ -2,6 +2,7 @@ import { useState } from "react";
 import ResumeDialog from "./ResumeDialog";
 import ContactDialog from "./ContactDialog";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import posthog from "posthog-js";
 
 export const Header = () => {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -23,13 +24,13 @@ export const Header = () => {
       <div className="flex flex-row gap-2 items-center">
         <button
           className="text-black h-fit font-sans text-[14px] hover:text-text bg-primary-white rounded-3xl px-4 py-2 hover:bg-border align-middle"
-          onClick={() => setResumeOpen(true)}
+          onClick={() => {setResumeOpen(true); posthog?.capture("Resume Opened");}}
         >
           Resume
         </button>
         <div
           className="bg-transparent h-fit rounded-3xl px-4 py-2 border-[1px] border-border text-text font-sans text-[14px] hover:bg-primary-white hover:text-black"
-          onClick={() => setContactOpen(true)}
+          onClick={() => {setContactOpen(true); posthog?.capture("Contact Opened");}}
         >
           Contact
         </div>

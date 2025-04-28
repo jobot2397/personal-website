@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Document, Page } from "react-pdf";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import posthog from "posthog-js";
 
 export default function ResumeDialog({ setIsOpen }) {
   const [pdfScale, setPdfScale] = useState(1);
@@ -35,7 +36,7 @@ export default function ResumeDialog({ setIsOpen }) {
             scale={pdfScale}
           />
         </Document>
-        <a href="/Resume.pdf" download class="button">
+        <a href="/Resume.pdf" download class="button" onClick={() => {posthog?.capture("Resume Downloaded")}}>
           <div className="flex flex-row w-full gap-2 border-border py-2 bg-black/55 hover:bg-black/75 text-primary-white border-2 rounded-2xl justify-center">
             Download
             <ArrowDownTrayIcon className="size-6" />
