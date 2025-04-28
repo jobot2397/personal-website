@@ -9,8 +9,6 @@ posthog.init(import.meta.env.VITE_REACT_APP_PUBLIC_POSTHOG_KEY, {
   api_host: import.meta.env.VITE_REACT_APP_PUBLIC_POSTHOG_HOST,
 });
 
-console.log(import.meta.env.VITE_REACT_APP_PUBLIC_POSTHOG_HOST)
-
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <PostHogProvider client={posthog}>
