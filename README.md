@@ -1,3 +1,3 @@
 ToDo
-- Make prompt.txt better
-- Make prefixed responses better
+- Give the AI more context about me
+- Go over entire codebase and format 

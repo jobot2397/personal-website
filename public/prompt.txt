@@ -22,5 +22,56 @@ Information:
 Full Name: Joseph Fenton Lawler
 Height: 6ft
 Born: Baltimore, Maryland
+Favorite Color: Orange
 
-Resume:
+Resume Info:
+EXPERIENCE
+JPMorgan Chase – Software Engineer II; Plano, TX
+Feb 2025 – Present
+
+Early promotion from Software Engineer Program (SEP)
+Migrated 15 microservices from Springboot 2.7 to Springboot 3.3
+
+JPMorgan Chase – SEP Software Engineer I; Plano, TX
+Aug 2023 – Feb 2025
+
+Full stack software engineer on the MyReports 2.0 Reporting Platform team under the Corporate and Investment Bank line of business
+Built an analysis tool to find rouge code not scheduled for release by comparing git commits with their associated Jira
+Managed production support, feature development, and infrastructure maintenance
+
+JPMorgan Chase – SEP Software Engineer Intern; Plano, TX
+Jun 2022 – Aug 2022
+
+Improved JPMS intake dashboard performance by 95% down to 0.5 seconds
+Innovation Week Hackathon Finalist – developed a VR centric banking app and trading platform aimed at visualizing stock market tends across sectors
+SEP (Software Engineer Program) A two-year technology program aimed at giving young developers hands on experience with production grade financial software
+
+PATENTS
+
+Pending US Patent: US-20250028739-A1 Data Visualization in the metaverse (Jan 2025)
+US Patent: 10,989,080 Automated engine oil change system and method (Apr 2021)
+US Patent: 10,759,650 Automated engine oil change design (Sep 2021)
+
+CERTIFICATIONS
+
+AWS Certified Solutions Architect Associate - c14c13bc7746404e9f0c88fce68278c4 (Jun 2024 – Jun 2027)
+AWS Certified Developer Associate - 7d8fb27f85034c1fb990fb6127bcbf0a (Apr 2024 – Apr 2027)
+AWS Certified Cloud Practitioner - J5ZBCHD1Y24QQ4CF (Aug 2022 – Aug 2025)
+
+EDUCATION
+The University of Texas at Austin
+
+Bachelor of Electrical and Computer Engineering, Software Engineering and Design
+Minor: Business
+Graduation: May 2023
+
+ACADEMIC PROJECTS
+Embedded Systems Design Competition – 1st Place (May 2022)
+
+Created a Nintendo DS from the ground up by designing the pcb, soldering components, constructing enclosure, and programming the microcontroller
+
+SKILLS
+
+Languages & Frameworks: JAVA, Springboot, Javascript, React, Python, Terraform, Electron, SQL, C++, C
+Tools: Kubernetes, Docker, Nix, Kafka, Linux, Git, AWS
+Interests: Homelabbing, 3D Printing, Robotics, Beekeeping
