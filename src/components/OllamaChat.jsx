@@ -158,10 +158,10 @@ export const OllamaChat = () => {
                 <img src="/images/profile-laptop.png" alt="Profile" />
               </div>
             </div>
-            <div className="flex justify-center pt-2 text-text font-semibold text-[28px] text-center text-balance">
+            <div className="flex justify-center pt-2 text-text font-semibold text-[20px] sm:text-[28px] text-center text-balance">
               Hi, my name is Joseph Lawler!
             </div>
-            <div className="flex justify-center pt-1 pb-4 text-text text-[20px] text-center">
+            <div className="flex justify-center pt-1 pb-4 text-text text-[14px] sm:text-[20px] text-center">
               Learn more about me using the chat or buttons below
             </div>
           </div>
