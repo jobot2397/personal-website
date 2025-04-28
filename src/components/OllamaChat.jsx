@@ -6,13 +6,14 @@ import { ArrowUpIcon } from "@heroicons/react/24/outline";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import {
   FIXED_RESPONSES,
+  HOST,
   MODEL_NAME,
   PLACE_HOLDER_MESSAGES,
 } from "../constants";
 
 // Create Ollama client
 const ollama = new Ollama({
-  host: ' https://joegpt.taile4be99.ts.net/',
+  host: HOST,
 });
 
 export const OllamaChat = () => {
