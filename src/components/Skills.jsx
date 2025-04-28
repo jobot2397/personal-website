@@ -99,7 +99,7 @@ export default function Skills() {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div
-                className="bg-secondary-grey h-2.5 rounded-full border-2 border-white"
+                className="bg-secondary-grey h-2.5 rounded-full border-1 border-white"
                 style={{ width: `${language.level}%` }}
               ></div>
             </div>
@@ -156,7 +156,7 @@ export default function Skills() {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div
-                className="bg-secondary-grey h-2.5 rounded-full border-2 border-white" style={{ width: `${tool.level}%` }}
+                className="bg-secondary-grey h-2.5 rounded-full border-1 border-white" style={{ width: `${tool.level}%` }}
               ></div>
             </div>
           </div>
